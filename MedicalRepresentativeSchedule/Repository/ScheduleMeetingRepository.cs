@@ -121,34 +121,49 @@ namespace MedicalRepresentativeSchedule.Repository
             _log4net.Info("Read Doctors CSV");
             try
             {
-                var CSVFile = new CsvFileDescription
+            //    var CSVFile = new CsvFileDescription
+            //    {
+              //        SeparatorChar = ',',
+             //         FirstLineHasColumnNames = true
+            //      };
+            //      var CSV = new CsvContext();
+             //     var doctors = from values in CSV.Read<Doctor>(@"./DoctorsList.csv", CSVFile)
+            //                    select new
+            //                    {
+             //                       DoctorName = values.DoctorName,
+             //                       ContactNumber = values.ContactNumber,
+             //                       TreatingAilment = values.TreatingAilment
+             //                   };
+
+            //      var Name = doctors.Select(c => c.DoctorName).ToList();
+            //      var Number = doctors.Select(c => c.ContactNumber).ToList();
+            //      var TA = doctors.Select(c => c.TreatingAilment).ToList();
+
+
+            //      for (int i = 0; i < Name.Count; i++)
+             //     {
+             //         Doctor[] doc = new Doctor[Name.Count];
+             //         doc[i] = new Doctor();
+             //         doc[i].DoctorName = Name[i];
+             //         doc[i].ContactNumber = Number[i];
+              //        doc[i].TreatingAilment = TA[i];
+              //        DoctorList.Add(doc[i]);
+
+
+              //    }
+              var reader = new StreamReader(@"../MedicalRepresentativeSchedule/DoctorsList.csv");
+               // Console.WriteLine("hhi");
+                while (!reader.EndOfStream)
                 {
-                    SeparatorChar = ',',
-                    FirstLineHasColumnNames = true
-                };
-                var CSV = new CsvContext();
-                var doctors = from values in CSV.Read<Doctor>(@"./DoctorsList.csv", CSVFile)
-                              select new
-                              {
-                                  DoctorName = values.DoctorName,
-                                  ContactNumber = values.ContactNumber,
-                                  TreatingAilment = values.TreatingAilment
-                              };
 
-                var Name = doctors.Select(c => c.DoctorName).ToList();
-                var Number = doctors.Select(c => c.ContactNumber).ToList();
-                var TA = doctors.Select(c => c.TreatingAilment).ToList();
+                    var line = reader.ReadLine();
 
-
-                for (int i = 0; i < Name.Count; i++)
-                {
-                    Doctor[] doc = new Doctor[Name.Count];
-                    doc[i] = new Doctor();
-                    doc[i].DoctorName = Name[i];
-                    doc[i].ContactNumber = Number[i];
-                    doc[i].TreatingAilment = TA[i];
-                    DoctorList.Add(doc[i]);
-
+                    var values = line.Split(",");
+                    Doctor doc = new Doctor();
+                    doc.DoctorName = values[0].ToString();
+                    doc.ContactNumber = Convert.ToInt64(values[1]);
+                    doc.TreatingAilment = values[2].ToString();
+                    DoctorList.Add(doc);
 
                 }
                 return DoctorList;
