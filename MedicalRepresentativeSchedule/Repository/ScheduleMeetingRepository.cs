@@ -173,7 +173,7 @@ namespace MedicalRepresentativeSchedule.Repository
                 {
 
 
-                    client.BaseAddress = new Uri(" https://40.89.253.117/");
+                    client.BaseAddress = new Uri("http://40.89.253.117/");
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     HttpResponseMessage response = new HttpResponseMessage();
                     response = client.GetAsync("MedicineStockInformation").Result;
