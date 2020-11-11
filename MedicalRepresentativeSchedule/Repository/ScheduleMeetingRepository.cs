@@ -153,7 +153,7 @@ namespace MedicalRepresentativeSchedule.Repository
 
               //    }
               var reader = new StreamReader(@"../MedicalRepresentativeSchedule/DoctorsList.csv");
-               // Console.WriteLine("hhi");
+                Console.WriteLine("hhi");
                 while (!reader.EndOfStream)
                 {
 
