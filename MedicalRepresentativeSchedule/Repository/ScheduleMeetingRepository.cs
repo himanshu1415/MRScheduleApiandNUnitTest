@@ -33,9 +33,17 @@ namespace MedicalRepresentativeSchedule.Repository
         };
 
         List<string> Dates = new List<string>();
-        List<Doctor> DoctorList = new List<Doctor>();
-        List<MedicineStock> Stockdata = new List<MedicineStock>();
-        List<RepSchedule> Meeting = new List<RepSchedule>();
+        List<Doctor> DoctorList = new List<Doctor>()
+        {
+
+            new Doctor() { DoctorName = "Dr. PK Ghosh",ContactNumber=9897931980, TreatingAilment="General" },
+            new Doctor() {  DoctorName = "Dr. Ashutosh",ContactNumber=9568144111, TreatingAilment="Orthopaedics" },
+            new Doctor() {  DoctorName = "Dr. Rekha Jain",ContactNumber=7879727310, TreatingAilment="Gynaecology" },
+            new Doctor() {  DoctorName = "Dr. SK Mittal",ContactNumber=9897931980, TreatingAilment="General" },
+            new Doctor() {  DoctorName = "Dr. Anupama",ContactNumber=6768696065, TreatingAilment="Orthopaedics" }
+        };
+      List<MedicineStock> Stockdata = new List<MedicineStock>();
+      List<RepSchedule> Meeting = new List<RepSchedule>();
 
         public dynamic ScheduleMeet(string startDate)
         {
@@ -152,21 +160,21 @@ namespace MedicalRepresentativeSchedule.Repository
 
 
               //    }
-              var reader = new StreamReader(@"../MedicalRepresentativeSchedule/DoctorsList.csv");
-                Console.WriteLine("hhi");
-                while (!reader.EndOfStream)
-                {
+              //var reader = new StreamReader(@"../MedicalRepresentativeSchedule/DoctorsList.csv");
+              //  Console.WriteLine("hhi");
+              //  while (!reader.EndOfStream)
+              //  {
 
-                    var line = reader.ReadLine();
+              //      var line = reader.ReadLine();
 
-                    var values = line.Split(",");
-                    Doctor doc = new Doctor();
-                    doc.DoctorName = values[0].ToString();
-                    doc.ContactNumber = Convert.ToInt64(values[1]);
-                    doc.TreatingAilment = values[2].ToString();
-                    DoctorList.Add(doc);
+              //      var values = line.Split(",");
+              //      Doctor doc = new Doctor();
+              //      doc.DoctorName = values[0].ToString();
+              //      doc.ContactNumber = Convert.ToInt64(values[1]);
+              //      doc.TreatingAilment = values[2].ToString();
+              //      DoctorList.Add(doc);
 
-                }
+              //  }
                 return DoctorList;
             }
             catch (Exception exception)
